@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fighter_01.png" type="Texture" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/figther_03.png" type="Texture" id=4]
 [ext_resource path="res://Scene/CameraController.gd" type="Script" id=5]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 4.0
@@ -28,16 +29,16 @@ script = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" type="Sprite" parent="YSort"]
+[node name="PlayerOld" type="Sprite" parent="YSort"]
 position = Vector2( 276, 90 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PlayerArea" type="Area2D" parent="YSort/Player"]
+[node name="PlayerArea" type="Area2D" parent="YSort/PlayerOld"]
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="YSort/Player/PlayerArea"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="YSort/PlayerOld/PlayerArea"]
 shape = SubResource( 1 )
 
 [node name="Enemy" type="Sprite" parent="YSort"]
@@ -56,6 +57,8 @@ shape = SubResource( 2 )
 position = Vector2( 75, 39 )
 texture = ExtResource( 4 )
 
+[node name="Player" parent="YSort" instance=ExtResource( 7 )]
+
 [node name="Bullet" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, 90 )
 
@@ -73,4 +76,5 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/TestKinematicBody2D"]
 shape = SubResource( 3 )
 
-[connection signal="area_entered" from="YSort/Player/PlayerArea" to="." method="_on_PlayerArea_area_entered"]
+[connection signal="area_entered" from="YSort/PlayerOld/PlayerArea" to="." method="_on_PlayerArea_area_entered"]
+[connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]

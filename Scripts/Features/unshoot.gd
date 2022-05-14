@@ -15,8 +15,15 @@ func unshoot(space_state, unshooter, target):
       unshooter.transform.origin, target.transform.origin, colliders,
       2147483647, true, true)
   
+  target.get_parent().get_parent().find_node("animate").emit_signal("bullet_ray", unshooter.position, target.position)
   for collider in colliders:
     if not collider in [unshooter, target]:
+      collider.emit_signal("hit", collider)
+      #collider.on_hit()
       collider.get_node("CollisionHandler").on_hit("bullet")
   
+  #target.get_parent().get_parent().find_node("animate").emit_signal("bullet_ray", unshooter.position, target.position)
+  #if result:
+    #result.collider.emit_signal("hit", result.collider)
+
   return true

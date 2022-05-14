@@ -34,7 +34,6 @@ func get_input(delta):
   if Input.is_action_just_pressed("ui_accept"):
     if is_instance_valid(bullet) and is_instance_valid(player):
       if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
-        #pass
         bullet.queue_free()
 
 func _physics_process(delta):

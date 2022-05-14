@@ -23,8 +23,14 @@ func unshoot():
   if bullet and is_instance_valid(bullet):
     if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
       bullets.unshoot()
-      if bullets.is_out_of_bullets():
-        get_tree().change_scene("res://Scene/GameOver.tscn")
+      if bullets.is_out_of_bullets() and not is_enemies_dead():
+          get_tree().change_scene("res://Scene/GameOver.tscn")
+
+func is_enemies_dead():
+  for e in get_tree().get_nodes_in_group("enemy"):
+    if e.is_alive:
+      return false
+  return true
 
 func _physics_process(delta):
   get_input(delta)

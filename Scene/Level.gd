@@ -37,7 +37,7 @@ func get_input(delta):
       var collisionLine = CollisionLine.instance()
       add_child(collisionLine)
       collisionLine.change_shape(bullet.transform.origin, player.transform.origin)
-      #bullet.queue_free()
+      bullet.queue_free()
 
 func _physics_process(delta):
   get_input(delta)

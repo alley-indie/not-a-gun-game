@@ -26,6 +26,11 @@ func get_input(delta):
       if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
         bullet.queue_free()
 
+func _process(delta):
+  if not has_node("YSort/StaticEnemy"):
+    print("WON")
+    get_tree().change_scene("res://Scene/MainMenu.tscn")
+
 func _physics_process(delta):
   get_input(delta)
 
@@ -36,3 +41,4 @@ func _on_Player_moved(delta):
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":
     body.queue_free()
+    get_tree().change_scene("res://Scene/GameOver.tscn")

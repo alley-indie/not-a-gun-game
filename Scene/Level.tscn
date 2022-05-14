@@ -86,7 +86,13 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 position = Vector2( 109, 61 )
 
 [node name="StaticEnemy" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 111, 109 )
+position = Vector2( 113, 110 )
+
+[node name="StaticEnemy2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 219, 54 )
+
+[node name="StaticEnemy3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 48, 67 )
 
 [node name="Bullet" type="Sprite" parent="YSort"]
 position = Vector2( 97, 137 )
@@ -104,5 +110,7 @@ width = 2.0
 default_color = Color( 0.286275, 0.403922, 1, 1 )
 
 [connection signal="body_entered" from="YSort/StaticEnemy" to="." method="_on_StaticEnemy_body_entered"]
+[connection signal="body_entered" from="YSort/StaticEnemy2" to="." method="_on_StaticEnemy_body_entered"]
+[connection signal="body_entered" from="YSort/StaticEnemy3" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="animation_finished" from="animate" to="animate" method="_on_animate_animation_finished"]
 [connection signal="bullet_ray" from="animate" to="animate" method="_on_animate_bullet_ray"]

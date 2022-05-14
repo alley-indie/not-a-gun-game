@@ -13,7 +13,7 @@ export(int) var enemySpeed = 50
 onready var player = $YSort/Player
 onready var enemy = $YSort/Enemy
 onready var viewport = get_viewport_rect()
-onready var bullet = $Ysort/Bullet
+onready var bullet = $YSort/Bullet
 
 func _ready():
   unshootScript = UnshootScript.new()
@@ -31,11 +31,9 @@ func get_input(delta):
     if is_instance_valid(bullet) and is_instance_valid(player):
       unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player)
       bullet.queue_free()
-      update()
 
 func _physics_process(delta):
   get_input(delta)
 
 func _on_Player_moved(delta):
   enemy_movement_to(player.position, delta)
-  update()

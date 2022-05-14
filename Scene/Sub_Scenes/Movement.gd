@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 export(int) var speed = 100
 
@@ -12,11 +12,10 @@ func _ready():
   print("CREATED")
 
 func _physics_process(delta):
-  #print(get_parent().position)
   velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
   velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
   
-  position += velocity.normalized() * speed * delta
+  get_parent().position += velocity.normalized() * speed * delta
   _adjust_position()
   
   if velocity:
@@ -33,4 +32,3 @@ func _adjust_position():
 
 func _on_Player_area_entered(area):
   queue_free()
-

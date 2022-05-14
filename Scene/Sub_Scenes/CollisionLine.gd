@@ -13,7 +13,11 @@ func _process(delta):
   if time_to_live <= 0:
     queue_free()
 
-func _on_CollisionLine_area_entered(area):
-  print(area)
-  if area.has_node("CollisionHandler"):
-    area.get_node("CollisionHandler").on_hit("bullet")
+#func _on_CollisionLine_area_entered(area):
+  #print(area)
+  #if area.has_node("CollisionHandler"):
+    #area.get_node("CollisionHandler").on_hit("bullet")
+
+
+func _on_CollisionLine_body_entered(body):
+  print("TILE COLLISION")

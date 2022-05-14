@@ -8,9 +8,6 @@ var velocity = Vector2.ZERO
 
 signal moved(delta)
 
-func _ready():
-  print("CREATED")
-
 func _physics_process(delta):
   #print(get_parent().position)
   velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

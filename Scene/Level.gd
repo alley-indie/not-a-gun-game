@@ -27,8 +27,10 @@ func get_input(delta):
     return
   
   if Input.is_action_just_pressed("ui_accept"):
-    unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player)
-    bullet.queue_free()
+    if is_instance_valid(bullet) and is_instance_valid(player):
+      unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player)
+      bullet.queue_free()
+      update()
 
 func _physics_process(delta):
   get_input(delta)

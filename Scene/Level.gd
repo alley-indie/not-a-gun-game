@@ -13,14 +13,15 @@ export(int) var enemySpeed = 50
 onready var player = $YSort/Player
 onready var enemy = $YSort/Enemy
 onready var viewport = get_viewport_rect()
-onready var bullet = $Bullet
+onready var bullet = $Ysort/Bullet
 
 func _ready():
   unshootScript = UnshootScript.new()
   print(viewport)
 
 func enemy_movement_to(player_position, delta):
-  enemy.position += enemy.position.direction_to(player_position) * enemySpeed * delta
+  if is_instance_valid(enemy):
+    enemy.position += enemy.position.direction_to(player_position) * enemySpeed * delta
 
 func get_input(delta):
   if not is_instance_valid(player):

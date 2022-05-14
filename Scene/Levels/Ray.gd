@@ -35,3 +35,9 @@ func _on_animate_bullet_ray(source, target):
 func _on_animate_animation_finished(anim_name):
   if anim_name == "Trace":
     (self.get_parent().find_node("Ray") as Line2D).clear_points()
+    var anim: Animation = self.get_animation("Trace")
+    var track_id: int = anim.find_track("Ray:points")
+    anim.remove_track(track_id)
+    track_id = anim.add_track(Animation.TYPE_VALUE, 0)
+    anim.track_set_path(track_id, "Ray:points")
+    

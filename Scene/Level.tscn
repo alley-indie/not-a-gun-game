@@ -111,8 +111,19 @@ texture = ExtResource( 6 )
 position = Vector2( 263, 53 )
 texture = ExtResource( 6 )
 
+[node name="Bullet4" type="Sprite" parent="YSort/BulletsController"]
+position = Vector2( 492, 45 )
+texture = ExtResource( 6 )
+
+[node name="Bullet5" type="Sprite" parent="YSort/BulletsController"]
+position = Vector2( 414, 109 )
+texture = ExtResource( 6 )
+
 [node name="MovingEnemy" parent="YSort" groups=["movers"] instance=ExtResource( 10 )]
 position = Vector2( 367, 72 )
+
+[node name="MovingEnemy2" parent="YSort" groups=["movers"] instance=ExtResource( 10 )]
+position = Vector2( 469, 134 )
 
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 1 )
@@ -130,5 +141,6 @@ default_color = Color( 0.286275, 0.403922, 1, 1 )
 [connection signal="body_entered" from="YSort/StaticEnemy2" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="body_entered" from="YSort/StaticEnemy3" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="body_entered" from="YSort/MovingEnemy" to="." method="_on_StaticEnemy_body_entered"]
+[connection signal="body_entered" from="YSort/MovingEnemy2" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="animation_finished" from="animate" to="animate" method="_on_animate_animation_finished"]
 [connection signal="bullet_ray" from="animate" to="animate" method="_on_animate_bullet_ray"]

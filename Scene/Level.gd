@@ -17,6 +17,7 @@ func get_input(delta):
 
   if Input.is_action_just_pressed("ui_accept"):
     unshoot()
+    bullets.update_bullet_selector()
 
 func unshoot():
   var bullet = bullets.get_current_bullet()

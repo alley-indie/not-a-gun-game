@@ -1,11 +1,13 @@
 extends Node2D
 
+onready var bulletSelector = $BulletSelector
+
 var bullets = []
 var bullet_index = 0
 
 func _ready():
-  for c in get_children():
-    bullets.append(c)
+  bullets = get_tree().get_nodes_in_group("bullet")
+  update_bullet_selector()
 
 func get_current_bullet():
   if bullet_index < bullets.size() and bullet_index >= 0:
@@ -31,6 +33,14 @@ func move(inc):
       bullet_index = bullets.size() - 1
       if bullet_index < 0:
         bullet_index = 0
+    
+    update_bullet_selector()
+    
+
+func update_bullet_selector():
+  var bullet = get_current_bullet()
+  if bullet:
+    bulletSelector.transform = bullet.transform
 
 func move_right():
   move(1)

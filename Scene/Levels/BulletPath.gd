@@ -10,7 +10,7 @@ func _draw():
     var from = bullet.transform.origin
     var to = player.transform.origin
     
-    draw_line(from, to, Color.white)
+    #draw_line(from, to, Color.white)
   #if is_instance_valid(bullet) and is_instance_valid(player):
     #var from = bullet.transform.origin
     #var to = player.transform.origin

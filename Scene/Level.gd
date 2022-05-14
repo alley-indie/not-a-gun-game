@@ -2,18 +2,8 @@ extends Node2D
 
 const UnshootScript = preload("res://Scripts/Features/unshoot.gd")
 
-
-#var velocity = Vector2.ZERO
-#var enemyVelocity = Vector2.ZERO
-#var bullet_velocity = Vector2.ZERO
-
-#export(int) var speed = 100
-#export(int) var enemySpeed = 50
-
-var CollisionLine = preload("res://Scene/Sub_Scenes/CollisionLine.tscn")
-
 onready var player = $YSort/Player
-onready var enemy = $YSort/StaticEnemy
+#onready var enemy = $YSort/StaticEnemy
 onready var viewport = get_viewport_rect()
 onready var bullet = $YSort/Bullet
 

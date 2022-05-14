@@ -94,8 +94,14 @@ position = Vector2( 219, 54 )
 [node name="StaticEnemy3" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 48, 67 )
 
-[node name="Bullet" type="Sprite" parent="YSort"]
+[node name="Bullets" type="Node2D" parent="YSort"]
+
+[node name="Bullet" type="Sprite" parent="YSort/Bullets"]
 position = Vector2( 97, 137 )
+texture = ExtResource( 6 )
+
+[node name="Bullet2" type="Sprite" parent="YSort/Bullets"]
+position = Vector2( 185, 137 )
 texture = ExtResource( 6 )
 
 [node name="BulletPath" type="Node2D" parent="."]

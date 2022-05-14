@@ -16,5 +16,14 @@ func get_input(delta):
     var space_state = get_world_2d().direct_space_state
     unshootScript.unshoot(space_state, bullet, player)
 
+func _process(delta):
+  update()
+
+func _draw():
+  var from = bullet.transform.origin
+  var to = player.transform.origin
+  
+  draw_line(from, to, Color.white)
+
 func _physics_process(delta):
   get_input(delta)

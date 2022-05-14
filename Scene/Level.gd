@@ -5,16 +5,39 @@ const UnshootScript = preload("res://Scripts/Features/unshoot.gd")
 onready var player = $YSort/Player
 onready var viewport = get_viewport_rect()
 onready var bullets = $YSort/BulletsController
+onready var dialog_event = $DialogEvent
 
 var unshootScript
 
 func _ready():
   unshootScript = UnshootScript.new()
+  $Camera2D/Control.visible = dialog_event.is_active
+  $Camera2D/Control/Label.text = dialog_event.dialog
+  $Camera2D/Control/Label/AnimationPlayer.play("show_text")
+
+func _input(event):
+  if dialog_event.is_active:
+    return
+  if event.is_action_pressed("select_right"):
+    bullets.move_right()
+  elif event.is_action_pressed("select_left"):
+    bullets.move_left()
 
 func get_input(delta):
+  if dialog_event.is_active:
+    if Input.is_action_just_pressed("ui_accept"):
+      if $Camera2D/Control/Label.visible_characters > -1:
+        $Camera2D/Control/Label/AnimationPlayer.stop()
+        $Camera2D/Control/Label.visible_characters = -1
+      else:
+        dialog_event.is_active = false
+        $Camera2D/Control.visible = dialog_event.is_active
+    return
+    
   if not is_instance_valid(player):
     return
 
+  player.move(delta)
   if Input.is_action_just_pressed("ui_accept"):
     unshoot()
     bullets.update_bullet_selector()

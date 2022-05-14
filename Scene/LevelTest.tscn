@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/tilesets/tileset.png" type="Texture" id=8]
 [ext_resource path="res://Scene/BulletsController.gd" type="Script" id=9]
-[ext_resource path="res://assets/bullets/selector.png" type="Texture" id=10]
+[ext_resource path="res://Scene/Sub_Scenes/BulletSelector.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scene/Event.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -50,39 +51,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "selector"
-length = 0.5
-loop = true
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Trace"
@@ -137,14 +105,7 @@ texture = ExtResource( 6 )
 position = Vector2( 198, 113 )
 texture = ExtResource( 6 )
 
-[node name="BulletSelector" type="Sprite" parent="YSort/BulletsController"]
-texture = ExtResource( 10 )
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/BulletsController/BulletSelector"]
-autoplay = "selector"
-anims/RESET = SubResource( 4 )
-anims/selector = SubResource( 5 )
+[node name="BulletSelector" parent="YSort/BulletsController" instance=ExtResource( 10 )]
 
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 1 )
@@ -156,6 +117,9 @@ script = ExtResource( 3 )
 [node name="Ray" type="Line2D" parent="."]
 width = 2.0
 default_color = Color( 0.286275, 0.403922, 1, 1 )
+
+[node name="DialogEvent" type="Node2D" parent="."]
+script = ExtResource( 11 )
 
 [connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]
 [connection signal="body_entered" from="YSort/StaticEnemy2" to="." method="_on_StaticEnemy_body_entered"]

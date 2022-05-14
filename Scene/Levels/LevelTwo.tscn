@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bullets/bullet.png" type="Texture" id=2]
 [ext_resource path="res://Scene/Levels/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://Scene/Levels/LevelTwo.gd" type="Script" id=4]
 [ext_resource path="res://assets/figther_04.png" type="Texture" id=5]
+[ext_resource path="res://Scene/Levels/Area2D.gd" type="Script" id=6]
+[ext_resource path="res://Scene/CameraController.gd" type="Script" id=7]
+[ext_resource path="res://Scene/Levels/Ray.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 6.0
@@ -41,7 +44,26 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 17, 90 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Trace"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ray:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Bullet" type="Sprite" parent="."]
@@ -71,5 +93,28 @@ root_node = NodePath("../../..")
 anims/EnemyHit = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 302, 90 )
+shape = SubResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 161, 89 )
+current = true
+script = ExtResource( 7 )
+
+[node name="animate" type="AnimationPlayer" parent="."]
+anims/Trace = SubResource( 6 )
+script = ExtResource( 8 )
+
+[node name="Ray" type="Line2D" parent="."]
+width = 2.0
+default_color = Color( 0.286275, 0.403922, 1, 1 )
+
 [connection signal="hit" from="YSort/Enemy" to="YSort/Enemy" method="_on_Enemy_hit"]
 [connection signal="animation_finished" from="YSort/Enemy/AnimationPlayer" to="YSort/Enemy" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
+[connection signal="animation_finished" from="animate" to="animate" method="_on_animate_animation_finished"]
+[connection signal="bullet_ray" from="animate" to="animate" method="_on_animate_bullet_ray"]

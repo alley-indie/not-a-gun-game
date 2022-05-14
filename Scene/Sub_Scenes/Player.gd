@@ -6,7 +6,7 @@ onready var viewport = get_viewport_rect()
 
 var velocity = Vector2.ZERO
 
-signal moved
+signal moved(delta)
 
 func _physics_process(delta):
   velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

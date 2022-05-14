@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
+[ext_resource path="res://Scene/StaticEnemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scene/CameraController.gd" type="Script" id=5]
 [ext_resource path="res://assets/bullets/bullet.png" type="Texture" id=6]
 [ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=7]
@@ -16,6 +17,9 @@ current = true
 script = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="StaticEnemy" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 92, 86 )
 
 [node name="Bullet" type="Sprite" parent="YSort"]
 position = Vector2( 97, 137 )

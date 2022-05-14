@@ -39,8 +39,7 @@ func _physics_process(delta):
   get_input(delta)
 
 func _on_Player_moved(delta):
-  pass
-  #enemy_movement_to(player.position, delta)
+  get_tree().call_group("movers", "enemy_movement_to", player.position, delta)
 
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":

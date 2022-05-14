@@ -6,7 +6,6 @@ var unshootScript
 var velocity = Vector2.ZERO
 var enemyVelocity = Vector2.ZERO
 var bullet_velocity = Vector2.ZERO
-var stored_delta = 0
 
 export(int) var speed = 100
 export(int) var enemySpeed = 50
@@ -18,6 +17,7 @@ onready var bullet = $Bullet
 
 func _ready():
   unshootScript = UnshootScript.new()
+  print(viewport)
 
 func enemy_movement_to(player_position, delta):
   enemy.position += enemy.position.direction_to(player_position) * enemySpeed * delta
@@ -26,14 +26,9 @@ func get_input(delta):
   if not is_instance_valid(player):
     return
   
-  stored_delta = delta
-  
   if Input.is_action_just_pressed("ui_accept"):
     unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player)
     bullet.queue_free()
-
-func _process(delta):
-  update()
 
 func _physics_process(delta):
   get_input(delta)
@@ -45,5 +40,6 @@ func _draw():
     
     draw_line(from, to, Color.white)
 
-func _on_Player_moved():
-  enemy_movement_to(player.position, stored_delta)
+func _on_Player_moved(delta):
+  enemy_movement_to(player.position, delta)
+  update()

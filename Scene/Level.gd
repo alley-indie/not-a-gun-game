@@ -19,7 +19,6 @@ onready var bullet = $YSort/Bullet
 
 var unshootScript
 
-
 func _ready():
   unshootScript = UnshootScript.new()
 
@@ -43,3 +42,7 @@ func _physics_process(delta):
 func _on_Player_moved(delta):
   pass
   #enemy_movement_to(player.position, delta)
+
+func _on_StaticEnemy_body_entered(body):
+  if body.get_name() == "Player":
+    body.queue_free()

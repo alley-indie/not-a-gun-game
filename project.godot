@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Not-a-gun-game"
-run/main_scene="res://Scene/MainMenu.tscn"
+run/main_scene="res://Scene/LevelTest.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scene/Sub_Scenes/Global.tscn"
 
 [display]
 

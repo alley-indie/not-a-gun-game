@@ -1,20 +1,12 @@
 extends Control
 
+onready var gameover_label = $VBoxContainer/Label
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var reason = ""
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-  pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#  pass
-
+  reason = Global.get_param("reason")
+  gameover_label.text = str("Game Over\n", reason)
 
 func _on_Button_pressed():
-  get_tree().change_scene("res://Scene/MainMenu.tscn")
+  Global.change_scene("res://Scene/MainMenu.tscn")

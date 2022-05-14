@@ -24,7 +24,7 @@ func unshoot():
     if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
       bullets.unshoot()
       if bullets.is_out_of_bullets() and not is_enemies_dead():
-          get_tree().change_scene("res://Scene/GameOver.tscn")
+        Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Out of Bullets" })
 
 func is_enemies_dead():
   for e in get_tree().get_nodes_in_group("enemy"):
@@ -40,9 +40,9 @@ func _on_Player_moved(delta):
 
 func _process(delta):
   if get_tree().get_nodes_in_group("enemy").size() == 0:
-    get_tree().change_scene("res://Scene/MainMenu.tscn")
+    get_tree().change_scene("res://Scene/WinScene.tscn")
 
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":
     body.queue_free()
-    get_tree().change_scene("res://Scene/GameOver.tscn")
+    Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Killed by Enemy" })

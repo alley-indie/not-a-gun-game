@@ -21,3 +21,6 @@ func _adjust_position():
     position.x = 0
   if position.y < 0:
     position.y = 0
+
+func _on_Player_area_entered(area):
+  queue_free()

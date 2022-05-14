@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/figther_05.png" type="Texture" id=3]
 [ext_resource path="res://assets/figther_03.png" type="Texture" id=4]
 [ext_resource path="res://Scene/CameraController.gd" type="Script" id=5]
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/bullets/bullet.png" type="Texture" id=6]
 [ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -58,9 +58,7 @@ position = Vector2( 75, 39 )
 texture = ExtResource( 4 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
-
-[node name="Bullet" parent="." instance=ExtResource( 6 )]
-position = Vector2( 80, 90 )
+position = Vector2( 36, 25 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 164, 85 )
@@ -75,6 +73,10 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/TestKinematicBody2D"]
 shape = SubResource( 3 )
+
+[node name="Bullet" type="Sprite" parent="."]
+position = Vector2( 97, 137 )
+texture = ExtResource( 6 )
 
 [connection signal="area_entered" from="YSort/PlayerOld/PlayerArea" to="." method="_on_PlayerArea_area_entered"]
 [connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]

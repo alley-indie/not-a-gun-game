@@ -36,13 +36,6 @@ func get_input(delta):
 func _physics_process(delta):
   get_input(delta)
 
-func _draw():
-  if is_instance_valid(bullet) and is_instance_valid(player):
-    var from = bullet.transform.origin
-    var to = player.transform.origin
-    
-    draw_line(from, to, Color.white)
-
 func _on_Player_moved(delta):
   enemy_movement_to(player.position, delta)
   update()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
 [ext_resource path="res://Scene/CameraController.gd" type="Script" id=5]
 [ext_resource path="res://assets/bullets/bullet.png" type="Texture" id=6]
@@ -22,5 +23,8 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 36, 25 )
+
+[node name="BulletPath" type="Node2D" parent="."]
+script = ExtResource( 1 )
 
 [connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]

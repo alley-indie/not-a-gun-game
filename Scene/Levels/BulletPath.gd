@@ -8,7 +8,7 @@ func _draw():
     var from = bullet.transform.origin
     var to = player.transform.origin
     
-    draw_line(from, to, Color.white, 2)
+    draw_line(from, to, Color.white, 1)
 
 func _process(delta):
   update()

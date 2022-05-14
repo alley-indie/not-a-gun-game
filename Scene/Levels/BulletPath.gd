@@ -2,12 +2,12 @@ extends Node2D
 
 onready var player = $"../YSort/Player"
 #onready var bullet = $"../YSort/Bullets/Bullet"
-
-var current_bullet
+onready var bullets = $"../YSort/BulletsController"
 
 func _draw():
-  if is_instance_valid(current_bullet) and is_instance_valid(player):
-    var from = current_bullet.transform.origin
+  var bullet = bullets.get_current_bullet()
+  if bullet and is_instance_valid(bullet):
+    var from = bullet.transform.origin
     var to = player.transform.origin
     
     draw_line(from, to, Color.white)

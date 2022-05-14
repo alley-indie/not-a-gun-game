@@ -1,6 +1,7 @@
 extends Control
 
-export(Array, String) var dialogs
+export(bool) var autostart = false
+export(Array, String, MULTILINE) var dialogs
 
 onready var text = $Label
 onready var animation = $Label/AnimationPlayer
@@ -18,9 +19,10 @@ func set_running(value):
   visible = running
 
 func start():
-  set_running(true)
-  text.text = dialogs[index]
-  animation.play("show_text")
+  if not running:
+    set_running(true)
+    text.text = dialogs[index]
+    animation.play("show_text")
 
 func next():
   if text.visible_characters > -1:

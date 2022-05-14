@@ -11,6 +11,9 @@ func get_current_bullet():
   if bullet_index < bullets.size() and bullet_index >= 0:
     return bullets[bullet_index]
 
+func is_out_of_bullets():
+  return bullets.size() == 0
+
 func _input(event):
   if bullet_index >= bullets.size():
     return

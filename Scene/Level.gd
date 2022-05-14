@@ -23,6 +23,8 @@ func unshoot():
   if bullet and is_instance_valid(bullet):
     if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
       bullets.unshoot()
+      if bullets.is_out_of_bullets():
+        get_tree().change_scene("res://Scene/GameOver.tscn")
 
 func _physics_process(delta):
   get_input(delta)

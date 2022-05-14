@@ -15,11 +15,13 @@ func unshoot(space_state, unshooter, target):
   
   colliders = filter_colliders(colliders, unshooter, target)
   if collides_with_walls(colliders, unshooter, target):
-    return
+    return false
   
   for collider in colliders:
     collider.get_node("CollisionHandler").on_hit("bullet")
   
+  return true
+
   #target.get_parent().get_parent().find_node("animate").emit_signal("bullet_ray", unshooter.position, target.position)
   #if result:
     #result.collider.emit_signal("hit", result.collider)

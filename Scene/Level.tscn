@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -11,8 +11,7 @@
 [ext_resource path="res://Scene/BulletsController.gd" type="Script" id=9]
 [ext_resource path="res://Scene/Sub_Scenes/MovingEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scene/Sub_Scenes/BulletSelector.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/figther_06.png" type="Texture" id=12]
-[ext_resource path="res://Scene/DialogEvent.gd" type="Script" id=13]
+[ext_resource path="res://Scene/Sub_Scenes/DialogEvent.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -68,38 +67,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "show_text"
-length = 3.0
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
 }
 
 [node name="Level" type="Node2D"]
@@ -173,47 +140,11 @@ position = Vector2( 161, 89 )
 current = true
 script = ExtResource( 5 )
 
-[node name="Control" type="Control" parent="Camera2D"]
-visible = false
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -160.0
-margin_top = 45.0
-margin_right = 160.0
-margin_bottom = 90.0
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0.294118 )
-
-[node name="Label" type="Label" parent="Camera2D/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -28.0
-margin_bottom = 3.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-autowrap = true
-percent_visible = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/Control/Label"]
-anims/RESET = SubResource( 4 )
-anims/show_text = SubResource( 5 )
-
-[node name="TextureRect" type="TextureRect" parent="Camera2D/Control"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -32.0
-texture = ExtResource( 12 )
-expand = true
-stretch_mode = 5
-
-[node name="DialogEvent" type="Node2D" parent="."]
-script = ExtResource( 13 )
-dialog = "Hey! See that bullet over there?"
+[node name="DialogEvent" parent="." instance=ExtResource( 12 )]
+margin_top = 132.0
+margin_right = 320.0
+margin_bottom = 180.0
+dialogs = [ "Hey! This is a test.", "The second text!" ]
 
 [connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]
 [connection signal="body_entered" from="YSort/MovingEnemy" to="." method="_on_StaticEnemy_body_entered"]

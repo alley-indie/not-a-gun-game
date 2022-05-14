@@ -11,12 +11,10 @@ var unshootScript
 
 func _ready():
   unshootScript = UnshootScript.new()
-  $Camera2D/Control.visible = dialog_event.is_active
-  $Camera2D/Control/Label.text = dialog_event.dialog
-  $Camera2D/Control/Label/AnimationPlayer.play("show_text")
+  dialog_event.start()
 
 func _input(event):
-  if dialog_event.is_active:
+  if dialog_event.running:
     return
   if event.is_action_pressed("select_right"):
     bullets.move_right()
@@ -24,14 +22,9 @@ func _input(event):
     bullets.move_left()
 
 func get_input(delta):
-  if dialog_event.is_active:
+  if dialog_event.running:
     if Input.is_action_just_pressed("ui_accept"):
-      if $Camera2D/Control/Label.visible_characters > -1:
-        $Camera2D/Control/Label/AnimationPlayer.stop()
-        $Camera2D/Control/Label.visible_characters = -1
-      else:
-        dialog_event.is_active = false
-        $Camera2D/Control.visible = dialog_event.is_active
+      dialog_event.next()
     return
     
   if not is_instance_valid(player):

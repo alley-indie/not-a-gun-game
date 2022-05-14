@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_Enemy_hit(enemy):
-  enemy.find_node("AnimationPlayer").play("EnemyHit")
+    enemy.find_node("AnimationPlayer").play("EnemyHit")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -132,7 +132,6 @@ script = ExtResource( 7 )
 [node name="DialogEvent" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_top = 132.0
-margin_right = 320.0
 margin_bottom = 180.0
 autostart = true
 dialogs = [ "Wait a minute!
@@ -142,7 +141,6 @@ OMG, they don't make it easy....", "Okay, let's go one more time!" ]
 [node name="EndDialogEvent" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_top = 132.0
-margin_right = 320.0
 margin_bottom = 180.0
 autostart = true
 

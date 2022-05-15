@@ -19,6 +19,7 @@ func unshoot(space_state, unshooter, target):
   target.get_parent().get_parent().find_node("animate").emit_signal("bullet_ray", unshooter.position, target.position)
   for collider in colliders:
     if not collider in [unshooter, target] and not collider.is_in_group("bullet"):
+      Global.play_enemy_killed_sound()
       collider.emit_signal("hit", collider)
       #collider.on_hit()
       collider.get_node("CollisionHandler").on_hit("bullet")

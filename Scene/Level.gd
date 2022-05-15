@@ -50,6 +50,7 @@ func unshoot():
   var bullet = bullets.get_current_bullet()
   if bullet and is_instance_valid(bullet):
     if unshootScript.unshoot(get_world_2d().direct_space_state, bullet, player):
+      Global.play_attack_sound()
       bullets.unshoot()
       if bullets.is_out_of_bullets() and not is_enemies_dead():
         Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Out of Bullets" })
@@ -57,6 +58,8 @@ func unshoot():
         var position = Vector2(get_node("Camera2D").position.x - 160, end_dialog_event.rect_position.y)
         end_dialog_event.set_position(position)
         end_dialog_event.start()
+    else:
+      Global.play_cant_attack_sound()
 
 func is_enemies_dead():
   for e in get_tree().get_nodes_in_group("enemy"):
@@ -84,4 +87,5 @@ func _on_StaticEnemy_body_entered(body):
     game_over("Killed by Enemy")
 
 func game_over(reason):
+  Global.play_player_killed_sound()
   Global.change_scene("res://Scene/GameOver.tscn", { "reason": reason, "level": get_name() })

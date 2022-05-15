@@ -15,22 +15,34 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 74.0
+margin_top = 43.0
 margin_right = 320.0
-margin_bottom = 88.0
+margin_bottom = 57.0
 size_flags_vertical = 10
 text = "Game Over"
 align = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 margin_left = 109.0
-margin_top = 126.0
+margin_top = 79.0
 margin_right = 211.0
-margin_bottom = 146.0
+margin_bottom = 99.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "To Main Menu"
 
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
+margin_left = 118.0
+margin_top = 141.0
+margin_right = 201.0
+margin_bottom = 161.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Retry Level"
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

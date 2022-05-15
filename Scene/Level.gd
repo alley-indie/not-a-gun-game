@@ -72,9 +72,12 @@ func _process(delta):
   if get_tree().get_nodes_in_group("enemy").size() == 0 and not end_dialog_event.running:
     Global.change_scene(next_level)
   elif bullets.is_out_of_bullets() and not is_enemies_dead():
-    Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Out of Bullets" })
+    game_over("Out of Bullets")
 
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":
     body.queue_free()
-    Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Killed by Enemy" })
+    game_over("Killed by Enemy")
+
+func game_over(reason):
+  Global.change_scene("res://Scene/GameOver.tscn", { "reason": reason, "level": get_name() })

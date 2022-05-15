@@ -69,6 +69,7 @@ func _on_Player_moved(delta):
   get_tree().call_group("movers", "enemy_movement_to", player.position, delta)
 
 func _process(delta):
+  bullets.update_bullet_selector()
   if get_tree().get_nodes_in_group("enemy").size() == 0 and not end_dialog_event.running:
     Global.change_scene(next_level)
   elif bullets.is_out_of_bullets() and not is_enemies_dead():

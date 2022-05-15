@@ -7,10 +7,8 @@ var bullets = []
 var bullet_index = -1
 
 func _ready():
-  #bullets = get_tree().get_nodes_in_group("bullet")
   bullet_index = -1
   update_bullets()
-  #update_bullet_selector()
 
 func update_bullets():
   bullets = []
@@ -47,7 +45,7 @@ func move(inc):
 
 func update_bullet_selector():
   var bullet = get_current_bullet()
-  if bullet:
+  if bullet and is_instance_valid(bullet):
     bulletSelector.visible = true
     bulletSelector.transform = bullet.transform
   else:

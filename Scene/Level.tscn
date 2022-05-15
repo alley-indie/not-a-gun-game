@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scene/Sub_Scenes/MovingEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scene/Sub_Scenes/BulletSelector.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scene/Sub_Scenes/DialogEvent.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scene/Sub_Scenes/Bullet.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -102,7 +103,7 @@ position = Vector2( 48, 67 )
 [node name="BulletsController" type="Node2D" parent="YSort"]
 script = ExtResource( 9 )
 
-[node name="Bullet" type="Sprite" parent="YSort/BulletsController" groups=["bullet"]]
+[node name="Bullet1" type="Sprite" parent="YSort/BulletsController" groups=["bullet"]]
 position = Vector2( 97, 137 )
 texture = ExtResource( 6 )
 
@@ -123,6 +124,9 @@ position = Vector2( 414, 109 )
 texture = ExtResource( 6 )
 
 [node name="BulletSelector" parent="YSort/BulletsController" instance=ExtResource( 11 )]
+
+[node name="Bullet" parent="YSort/BulletsController" groups=["bullet"] instance=ExtResource( 13 )]
+position = Vector2( 43, 109 )
 
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 1 )

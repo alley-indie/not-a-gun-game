@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Scene/Sub_Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/CameraController.gd" type="Script" id=2]
-[ext_resource path="res://assets/bullets/bullet.png" type="Texture" id=3]
 [ext_resource path="res://Scene/BulletsController.gd" type="Script" id=4]
 [ext_resource path="res://assets/tilesets/tileset.png" type="Texture" id=5]
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=6]
@@ -11,6 +10,7 @@
 [ext_resource path="res://Scene/Sub_Scenes/StaticEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scene/Sub_Scenes/DialogEvent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scene/Sub_Scenes/BulletSelector.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scene/Sub_Scenes/Bullet.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -85,16 +85,15 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 position = Vector2( 39, 69 )
 
 [node name="StaticEnemy" parent="YSort" groups=["enemy"] instance=ExtResource( 9 )]
-position = Vector2( 154, 95 )
+position = Vector2( 138, 90 )
 
 [node name="BulletsController" type="Node2D" parent="YSort"]
 script = ExtResource( 4 )
 
-[node name="Bullet2" type="Sprite" parent="YSort/BulletsController" groups=["bullet"]]
-position = Vector2( 244, 107 )
-texture = ExtResource( 3 )
-
 [node name="BulletSelector" parent="YSort/BulletsController" instance=ExtResource( 11 )]
+
+[node name="Bullet" parent="YSort/BulletsController" groups=["bullet"] instance=ExtResource( 12 )]
+position = Vector2( 185, 98 )
 
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 6 )

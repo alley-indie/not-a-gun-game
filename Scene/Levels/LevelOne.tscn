@@ -84,7 +84,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 39, 69 )
 
-[node name="StaticEnemy3" parent="YSort" groups=["enemy"] instance=ExtResource( 9 )]
+[node name="StaticEnemy" parent="YSort" groups=["enemy"] instance=ExtResource( 9 )]
 position = Vector2( 154, 95 )
 
 [node name="BulletsController" type="Node2D" parent="YSort"]
@@ -128,5 +128,6 @@ dialogs = [ "Congrats! That's it!", "Use your ungun to aim at the bullets and
 [UNSHOOT] them.", "Try to unshoot when there's an enemy
 in between you and the bullet.", "See ya on the next level!" ]
 
+[connection signal="body_entered" from="YSort/StaticEnemy" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="animation_finished" from="animate" to="animate" method="_on_animate_animation_finished"]
 [connection signal="bullet_ray" from="animate" to="animate" method="_on_animate_bullet_ray"]

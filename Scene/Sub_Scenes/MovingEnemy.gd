@@ -12,7 +12,11 @@ func _ready():
 
 func enemy_movement_to(player_position, delta):
   if is_instance_valid(self):
+    var old_position = position
     position += position.direction_to(player_position) * speed * delta
+    if get_overlapping_bodies():
+      position = old_position
+    #if coll
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #  pass

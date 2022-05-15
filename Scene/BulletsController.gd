@@ -45,3 +45,5 @@ func unshoot():
     bullet.queue_free()
     bullets.remove(bullet_index)
     bullet_index = bullets.size() - 1
+    if bullet_index < 0:
+      bulletSelector.visible = false

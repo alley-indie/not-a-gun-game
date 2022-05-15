@@ -70,6 +70,7 @@ tracks/0/keys = {
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource( 6 )
+next_level = "res://Scene/Levels/LevelThree.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -137,5 +138,7 @@ autostart = true
 dialogs = [ "Wow!
 You're getting better at killing enemies.", "Should I be afraid?" ]
 
+[connection signal="body_entered" from="YSort/StaticEnemy3" to="." method="_on_StaticEnemy_body_entered"]
+[connection signal="body_entered" from="YSort/StaticEnemy4" to="." method="_on_StaticEnemy_body_entered"]
 [connection signal="animation_finished" from="animate" to="animate" method="_on_animate_animation_finished"]
 [connection signal="bullet_ray" from="animate" to="animate" method="_on_animate_bullet_ray"]

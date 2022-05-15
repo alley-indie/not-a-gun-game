@@ -13,9 +13,9 @@ onready var end_dialog_event = $EndDialogEvent
 var unshootScript
 
 func get_active_dialog():
-  if dialog_event.running:
+  if dialog_event and dialog_event.running:
     return dialog_event
-  elif end_dialog_event.running:
+  elif end_dialog_event and end_dialog_event.running:
     return end_dialog_event
 
 func _ready():
@@ -69,7 +69,6 @@ func _on_Player_moved(delta):
 
 func _process(delta):
   if get_tree().get_nodes_in_group("enemy").size() == 0 and not end_dialog_event.running:
-    #get_tree().change_scene("res://Scene/WinScene.tscn")
     Global.change_scene(next_level)
 
 func _on_StaticEnemy_body_entered(body):

@@ -19,7 +19,7 @@ func set_running(value):
   visible = running
 
 func start():
-  if not running:
+  if not running and dialogs.size():
     set_running(true)
     text.text = dialogs[index]
     animation.play("show_text")

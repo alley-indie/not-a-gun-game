@@ -8,8 +8,9 @@ func unshoot(space_state, unshooter, target):
     2147483647, true, true)
   
   while (result):
-    if not result.collider.has_node("CollisionHandler"):
-      return false
+    if not result.collider.is_in_group("bullet"):
+      if not result.collider.has_node("CollisionHandler"):
+        return false
     colliders.append(result.collider)
     result = space_state.intersect_ray(
       unshooter.transform.origin, target.transform.origin, colliders,
@@ -17,7 +18,7 @@ func unshoot(space_state, unshooter, target):
   
   target.get_parent().get_parent().find_node("animate").emit_signal("bullet_ray", unshooter.position, target.position)
   for collider in colliders:
-    if not collider in [unshooter, target]:
+    if not collider in [unshooter, target] and not collider.is_in_group("bullet"):
       collider.emit_signal("hit", collider)
       #collider.on_hit()
       collider.get_node("CollisionHandler").on_hit("bullet")

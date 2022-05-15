@@ -41,6 +41,7 @@ func get_input(delta):
     return
 
   player.move(delta)
+  bullets.update_bullets()
   if Input.is_action_just_pressed("ui_accept"):
     unshoot()
     bullets.update_bullet_selector()
@@ -70,6 +71,8 @@ func _on_Player_moved(delta):
 func _process(delta):
   if get_tree().get_nodes_in_group("enemy").size() == 0 and not end_dialog_event.running:
     Global.change_scene(next_level)
+  elif bullets.is_out_of_bullets() and not is_enemies_dead():
+    Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Out of Bullets" })
 
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/sprites/alien.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/alien_4.png" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/alien_3.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/doc.png" type="Texture" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -472,7 +473,6 @@ script = ExtResource( 5 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 39, 68 )
-z_index = 15
 z_as_relative = false
 
 [node name="MovingEnemy" parent="YSort" groups=["enemy", "movers"] instance=ExtResource( 10 )]
@@ -562,6 +562,22 @@ oscilation = Vector2( 0, 48 )
 oscilation_time = 3
 texture = ExtResource( 17 )
 
+[node name="Proffesor" type="Sprite" parent="YSort"]
+position = Vector2( 28, 44 )
+texture = ExtResource( 18 )
+
+[node name="Proffesor4" type="Sprite" parent="YSort"]
+position = Vector2( 1277, 140 )
+texture = ExtResource( 18 )
+
+[node name="Proffesor3" type="Sprite" parent="YSort"]
+position = Vector2( 690, 99 )
+texture = ExtResource( 18 )
+
+[node name="Proffesor2" type="Sprite" parent="YSort"]
+position = Vector2( 363, 100 )
+texture = ExtResource( 18 )
+
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
@@ -577,8 +593,11 @@ default_color = Color( 0.286275, 0.403922, 1, 1 )
 margin_top = 132.0
 margin_bottom = 180.0
 autostart = true
-dialogs = [ "Hey! There's an enemy just ahead", "Do you see that bullet on the floor just there?
-Try to use your [UNGUN] on it to kill the enemy." ]
+dialogs = [ "Proffesor: Oh hi again! You finally here!
+As I said I have a little problem.", "Do you see that guys?
+They are called Dave. They're clones.
+Evil clones, but stupid. But still evil.", "Do you see that bullet on the floor just there?
+Try to use your [UNGUN] (SPACE) on it to kill the enemy. And free path for me." ]
 
 [node name="EndDialogEvent" parent="." instance=ExtResource( 12 )]
 margin_left = 1313.0
@@ -586,14 +605,15 @@ margin_top = 132.0
 margin_right = 1633.0
 margin_bottom = 180.0
 autostart = true
-dialogs = [ "Congrats! That's it!
-You kiiled them all." ]
+dialogs = [ "Professor: Thank you, brave Dav... I mean hero!
+Now I can return to my barbarian experiments
+with clones." ]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 8 )
-dialogs = [ [ "Ow shit!
-Now there are TWO enemies!", "Okay, let's calm down.
-At least we have TWO bullets to kill them.", "Try to select the bullet you wanna unshoot
+dialogs = [ [ "Professor: Nice, you did it. 
+Situation is more serious then I thought.", "Okay, let's calm down. 
+Everything not as bad as it could be.", "Try to select the bullet you wanna unshoot
 with the keys [a] and [d]
 When you have it ready, unshoot!" ] ]
 conditions = [ [ "YSort/StaticEnemy" ] ]
@@ -610,9 +630,9 @@ dialogs = [ [ "Ow shit!
 Now there are TWO enemies!", "Okay, let's calm down.
 At least we have TWO bullets to kill them.", "Try to select the bullet you wanna unshoot
 with the keys [a] and [d]
-When you have it ready, unshoot!" ], [ "Wait a minute!
+When you have it ready, unshoot!" ], [ "Professor: Wait a minute!
 Are they MOVING?
-OMG, they don't make it easy....", "Okay, let's go one more time!" ] ]
+But how, I broked their legs.", "Okay, let's go one more time!" ] ]
 conditions = [ [ "YSort/StaticEnemy" ], [ "YSort/StaticEnemy2", "YSort/StaticEnemy3" ] ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
@@ -629,9 +649,9 @@ At least we have TWO bullets to kill them.", "Try to select the bullet you wanna
 with the keys [a] and [d]
 When you have it ready, unshoot!" ], [ "Wait a minute!
 Are they MOVING?
-OMG, they don't make it easy....", "Okay, let's go one more time!" ], [ "What the hell is 
-THAT?", "They are moving to 
-YOU!" ] ]
+OMG, they don't make it easy....", "Okay, let's go one more time!" ], [ "Professor: Ok, this is really bad. This kind of Daves 
+will try to kill you.", "But don't worry, they're like T-Rex.
+While you not moving, they don't see you." ] ]
 conditions = [ [ "YSort/StaticEnemy" ], [ "YSort/StaticEnemy2", "YSort/StaticEnemy3" ], [ "YSort/StaticEnemy4", "YSort/StaticEnemy5", "YSort/StaticEnemy6", "YSort/StaticEnemy7", "YSort/StaticEnemy8", "YSort/StaticEnemy9" ] ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]

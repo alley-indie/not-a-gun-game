@@ -6,7 +6,7 @@ export(Array, Array, String, MULTILINE) var dialogs = []
 export(Array, Array, String) var conditions = []
 
 var dialog_level_unfinished = [
-  """Kill all enemies in this room before
+  """Professor: Kill all enemies in this room before
 you can continue
   """  
 ]

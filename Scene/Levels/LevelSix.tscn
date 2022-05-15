@@ -332,7 +332,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[node name="LevelOne" type="Node2D"]
+[node name="LevelSix" type="Node2D"]
 script = ExtResource( 7 )
 next_level = "res://Scene/Levels/LevelTwo.tscn"
 

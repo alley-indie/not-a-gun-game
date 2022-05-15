@@ -5,8 +5,8 @@
 [ext_resource path="res://Scene/Levels/Enemy.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.0
-height = 4.0
+radius = 8.0
+height = 6.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "EnemyHit"

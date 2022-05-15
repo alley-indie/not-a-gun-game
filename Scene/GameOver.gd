@@ -1,6 +1,6 @@
 extends Control
 
-onready var gameover_label = $VBoxContainer/Label
+onready var gameover_label = $Label
 
 var reason = ""
 #var level = "res://Scene/Levels/LevelOne.tscn"
@@ -9,6 +9,8 @@ var level = "res://Scene/Level.tscn"
 
 func _ready():
   reason = Global.get_param("reason")
+  if not reason:
+    reason = ""
   #level = Global.get_param("level")
   gameover_label.text = str("Game Over\n", reason)
 

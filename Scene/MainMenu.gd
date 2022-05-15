@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+  Global.play("music")
+
 func _on_StartButton_pressed():
   Global.change_scene("res://Scene/Level.tscn")
   Global.play_button_sound()

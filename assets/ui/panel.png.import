@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dungeon_Tileset.png-8cb50e8141590385235e32aae1f0eb4a.stex"
+path="res://.import/panel.png-3b9543c06792d57fdee8f168520a6a81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Dungeon_Tileset.png"
-dest_files=[ "res://.import/Dungeon_Tileset.png-8cb50e8141590385235e32aae1f0eb4a.stex" ]
+source_file="res://assets/ui/panel.png"
+dest_files=[ "res://.import/panel.png-3b9543c06792d57fdee8f168520a6a81.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scene/Levels/BulletPath.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Level.gd" type="Script" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Scene/Sub_Scenes/DialogEvent.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scene/Sub_Scenes/Bullet.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/sprites/alien_2.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/alien.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/alien_4.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/alien_3.png" type="Texture" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -362,7 +365,7 @@ z_as_relative = false
 
 [node name="MovingEnemy" parent="YSort" groups=["enemy", "movers"] instance=ExtResource( 10 )]
 position = Vector2( 1516, 68 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="MovingEnemy2" parent="YSort" groups=["enemy", "movers"] instance=ExtResource( 10 )]
 position = Vector2( 1618, 130 )
@@ -370,12 +373,15 @@ texture = ExtResource( 14 )
 
 [node name="StaticEnemy" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 136, 87 )
+texture = ExtResource( 17 )
 
 [node name="StaticEnemy2" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 526, 65 )
+texture = ExtResource( 16 )
 
 [node name="StaticEnemy3" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 403, 73 )
+texture = ExtResource( 16 )
 
 [node name="BulletsController" type="Node2D" parent="YSort"]
 script = ExtResource( 9 )
@@ -413,11 +419,13 @@ position = Vector2( 996, 129 )
 position = Vector2( 814, 61 )
 oscilation = Vector2( -32, 32 )
 oscilation_time = 2
+texture = ExtResource( 14 )
 
 [node name="StaticEnemy5" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 721, 74 )
 oscilation = Vector2( 0, 32 )
 oscilation_time = 3
+texture = ExtResource( 14 )
 
 [node name="StaticEnemy6" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 878, 116 )
@@ -428,16 +436,19 @@ oscilation_time = 3
 position = Vector2( 1058, 147 )
 oscilation = Vector2( 0, -48 )
 oscilation_time = 3
+texture = ExtResource( 16 )
 
 [node name="StaticEnemy8" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 1105, 148 )
 oscilation = Vector2( 0, -48 )
 oscilation_time = 3
+texture = ExtResource( 17 )
 
 [node name="StaticEnemy9" parent="YSort" groups=["enemy"] instance=ExtResource( 4 )]
 position = Vector2( 1075, 100 )
 oscilation = Vector2( 0, 48 )
 oscilation_time = 3
+texture = ExtResource( 17 )
 
 [node name="BulletPath" type="Node2D" parent="."]
 script = ExtResource( 1 )

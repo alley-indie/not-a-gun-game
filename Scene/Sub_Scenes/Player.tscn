@@ -20,3 +20,6 @@ shape = SubResource( 1 )
 
 [node name="CollisionHandler" type="Node2D" parent="."]
 script = ExtResource( 3 )
+
+[connection signal="allow_moving_forward" from="." to="." method="allow_moving_forward"]
+[connection signal="stop_moving_forward" from="." to="." method="stop_moving_forward"]

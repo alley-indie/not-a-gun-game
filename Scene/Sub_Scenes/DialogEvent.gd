@@ -36,3 +36,7 @@ func next():
     else:
       text.text = dialogs[index]
       animation.play("show_text")
+
+func set_dialogs(d):
+  index = 0
+  dialogs = d

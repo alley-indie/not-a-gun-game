@@ -54,11 +54,14 @@ func unshoot():
       if bullets.is_out_of_bullets() and not is_enemies_dead():
         Global.change_scene("res://Scene/GameOver.tscn", { "reason": "Out of Bullets" })
       elif is_enemies_dead():
+        var position = Vector2(get_node("Camera2D").position.x - 160, end_dialog_event.rect_position.y)
+        end_dialog_event.set_position(position)
         end_dialog_event.start()
 
 func is_enemies_dead():
   for e in get_tree().get_nodes_in_group("enemy"):
     if e.is_alive:
+      print(e)
       return false
   return true
 

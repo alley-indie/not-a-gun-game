@@ -5,11 +5,16 @@ export(int) var speed = 100
 onready var viewport = get_viewport_rect()
 
 var velocity = Vector2.ZERO
-
+var allowed_moving_forward = true
 signal moved(delta)
+signal stop_moving_forward
+signal allow_moving_forward
 
 func move(delta):
-  velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+  if allowed_moving_forward or Input.get_action_strength("ui_right") < Input.get_action_strength("ui_left"):
+    velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+  else:
+    velocity.x = 0
   velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
   velocity = velocity.normalized()
   
@@ -17,6 +22,12 @@ func move(delta):
     velocity = move_and_slide(velocity * speed)
     _adjust_position()
     emit_signal("moved", delta)
+
+func stop_moving_forward():
+  allowed_moving_forward = false
+
+func allow_moving_forward():
+  allowed_moving_forward = true
 
 func _adjust_position():
   if position.x < 0:

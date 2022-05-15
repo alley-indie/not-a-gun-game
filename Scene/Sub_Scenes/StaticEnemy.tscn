@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scene/Sub_Scenes/EnemyCollisionHandler.gd" type="Script" id=1]
 [ext_resource path="res://assets/figther_03.png" type="Texture" id=2]
 [ext_resource path="res://Scene/Levels/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/alien.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -41,6 +42,7 @@ tracks/0/keys = {
 
 [node name="StaticEnemy" type="Area2D"]
 script = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

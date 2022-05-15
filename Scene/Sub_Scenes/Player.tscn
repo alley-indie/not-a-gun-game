@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/figther_02.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/player.png" type="Texture" id=1]
 [ext_resource path="res://Scene/Sub_Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scene/Sub_Scenes/CollisionHandler.gd" type="Script" id=3]
 

@@ -376,7 +376,6 @@ script = ExtResource( 2 )
 
 [node name="DialogEvent" parent="." instance=ExtResource( 10 )]
 margin_top = 132.0
-margin_right = 320.0
 margin_bottom = 180.0
 autostart = true
 dialogs = [ "Hey! There's an enemy just ahead", "Do you see that bullet on the floor just there?
@@ -384,7 +383,6 @@ Try to use your [UNGUN] on it to kill the enemy." ]
 
 [node name="EndDialogEvent" parent="." instance=ExtResource( 10 )]
 margin_top = 132.0
-margin_right = 320.0
 margin_bottom = 180.0
 autostart = true
 dialogs = [ "Congrats! That's it!", "Use your ungun to aim at the bullets and

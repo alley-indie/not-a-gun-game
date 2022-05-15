@@ -4,8 +4,10 @@ signal hit(enemy)
 
 export(Vector2) var oscilation = Vector2.ZERO
 export(int) var oscilation_time = 4
+export(Texture) var texture;
 
 onready var animationPlayer = $AnimationPlayer
+onready var sprite = $Sprite
 
 var is_alive = true
 
@@ -15,6 +17,7 @@ func max_vector_value(vector):
   return vector.y
 
 func _ready():
+  sprite.texture = texture
   if oscilation:
     var animation = Animation.new()
     animationPlayer.add_animation("oscilate", animation)

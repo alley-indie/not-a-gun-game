@@ -4,7 +4,7 @@ func _ready():
   Global.play("music")
 
 func _on_StartButton_pressed():
-  Global.change_scene("res://Scene/Level.tscn")
+  Global.change_scene("res://Scene/StoryScene.tscn")
   Global.play_button_sound()
 
 func _on_QuitButton_pressed():

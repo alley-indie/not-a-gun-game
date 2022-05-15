@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scene/Sub_Scenes/EnemyCollisionHandler.gd" type="Script" id=1]
-[ext_resource path="res://assets/figther_03.png" type="Texture" id=2]
 [ext_resource path="res://Scene/Levels/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://assets/sprites/alien.png" type="Texture" id=4]
 
@@ -48,7 +47,7 @@ texture = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="CollisionHandler" type="Node2D" parent="."]
 script = ExtResource( 1 )

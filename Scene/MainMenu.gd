@@ -7,7 +7,3 @@ func _on_StartButton_pressed():
 func _on_QuitButton_pressed():
   Global.play_button_sound()
   get_tree().quit()
-
-func _on_CreditsButton_pressed():
-  Global.play_button_sound()
-  Global.change_scene("res://Scene/Credits.tscn")

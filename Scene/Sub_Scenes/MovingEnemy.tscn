@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scene/Sub_Scenes/EnemyCollisionHandler.gd" type="Script" id=1]
-[ext_resource path="res://assets/figther_05.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/alien.png" type="Texture" id=2]
 [ext_resource path="res://Scene/Sub_Scenes/MovingEnemy.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]

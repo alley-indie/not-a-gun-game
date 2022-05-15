@@ -2,6 +2,8 @@ extends Node2D
 
 const UnshootScript = preload("res://Scripts/Features/unshoot.gd")
 
+export(String) var next_level = "res://Scene/WinScene.tscn"
+
 onready var player = $YSort/Player
 onready var viewport = get_viewport_rect()
 onready var bullets = $YSort/BulletsController
@@ -67,7 +69,8 @@ func _on_Player_moved(delta):
 
 func _process(delta):
   if get_tree().get_nodes_in_group("enemy").size() == 0 and not end_dialog_event.running:
-    get_tree().change_scene("res://Scene/WinScene.tscn")
+    #get_tree().change_scene("res://Scene/WinScene.tscn")
+    Global.change_scene(next_level)
 
 func _on_StaticEnemy_body_entered(body):
   if body.get_name() == "Player":

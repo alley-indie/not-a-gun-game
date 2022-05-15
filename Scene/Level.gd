@@ -30,6 +30,8 @@ func _input(event):
     bullets.move_right()
   elif event.is_action_pressed("select_left"):
     bullets.move_left()
+  elif event.is_action_pressed("ui_cancel"):
+    Global.change_scene("res://Scene/GameOver.tscn", { "reason": "You Evaded", "level": get_name() })
 
 func get_input(delta):
   if get_active_dialog():
@@ -64,7 +66,6 @@ func unshoot():
 func is_enemies_dead():
   for e in get_tree().get_nodes_in_group("enemy"):
     if e.is_alive:
-      print(e)
       return false
   return true
 

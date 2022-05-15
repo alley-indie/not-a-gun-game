@@ -449,7 +449,6 @@ default_color = Color( 0.286275, 0.403922, 1, 1 )
 
 [node name="DialogEvent" parent="." instance=ExtResource( 12 )]
 margin_top = 132.0
-margin_right = 320.0
 margin_bottom = 180.0
 autostart = true
 dialogs = [ "Hey! There's an enemy just ahead", "Do you see that bullet on the floor just there?

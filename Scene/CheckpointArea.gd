@@ -1,9 +1,5 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export(int) var level = 1
 
 export(Array, Array, String, MULTILINE) var dialogs = []
@@ -15,16 +11,6 @@ you can continue
   """  
 ]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-  pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#  pass
-
-
 func _on_Area2D_area_entered(area):
   if area.get_name() == "Player":
     if dialogs[level]:
@@ -34,7 +20,7 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_Area2D_body_entered(body):
-  print(body.get_name())
+  #print(body.get_name())
   if body.get_name() == "Player":
     var is_level_finished = true
     for path in conditions[level - 1]:
